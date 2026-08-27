@@ -1,44 +1,79 @@
-# React + JSON Server — Projeto para 2 aulas
+# React + JSON Server — V1
 
-Projeto simples para ensinar React consumindo uma API simulada.
+Projeto desenvolvido para praticar **React consumindo uma API REST simulada com JSON Server**.
+
+A proposta é trabalhar a integração entre frontend e uma API mockada antes da implementação de um backend real.
+
+---
+
+## Tecnologias utilizadas
+
+* React
+* JavaScript
+* Vite
+* JSON Server
+* Fetch API
+* Node.js
+* npm
+
+---
+
+## Estrutura principal
+
+```text
+ReactComJSONServerV1/
+├── src/
+├── db.json
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
+```
+
+---
 
 ## Instalação
 
-Abra o terminal na pasta do projeto:
+Abra o terminal dentro da pasta do projeto:
 
 ```bash
 npm install
 ```
 
-## Rodar o backend simulado
+---
 
-Abra um terminal:
+## Rodar o JSON Server
+
+Abra um terminal e execute:
 
 ```bash
 npm run server
 ```
 
-O JSON Server ficará em:
+O backend simulado ficará disponível em:
 
 ```text
 http://localhost:3001
 ```
 
-Teste no navegador:
+Para visualizar diretamente os dados das tarefas:
 
 ```text
 http://localhost:3001/tarefas
 ```
 
+---
+
 ## Rodar o React
 
-Abra OUTRO terminal:
+Abra outro terminal:
 
 ```bash
 npm run dev
 ```
 
-O Vite mostrará o endereço do React, normalmente:
+O Vite normalmente disponibiliza o frontend em:
 
 ```text
 http://localhost:5173
@@ -46,26 +81,32 @@ http://localhost:5173
 
 ---
 
-## Aula 1
+# Aula 1 — Consumo da API
 
-Foco:
+Na primeira etapa, o foco está no consumo dos dados disponibilizados pelo JSON Server.
 
-- dados mockados
-- JSON Server
-- GET
-- fetch
-- async/await
-- useEffect
-- useState
-- organização em service
-- listagem dos dados
+## Conteúdos trabalhados
 
-Fluxo:
+* dados mockados;
+* JSON Server;
+* método `GET`;
+* Fetch API;
+* `async/await`;
+* `useEffect`;
+* `useState`;
+* organização em camada de service;
+* renderização de listas.
+
+---
+
+## Fluxo da Aula 1
 
 ```text
 React
   ↓
 tarefaService.js
+  ↓
+fetch()
   ↓
 GET /tarefas
   ↓
@@ -74,18 +115,50 @@ JSON Server
 db.json
 ```
 
-## Aula 2
+O React não acessa diretamente o arquivo `db.json`.
 
-Foco:
+A aplicação consome os dados através de uma API criada pelo JSON Server.
 
-- POST
-- PATCH
-- DELETE
-- atualização do estado
-- CRUD
-- independência entre frontend e backend
+---
 
-Rotas utilizadas:
+## Camada Service
+
+A comunicação com a API é organizada em uma camada de serviço:
+
+```text
+Componente React
+      ↓
+tarefaService.js
+      ↓
+JSON Server
+```
+
+Essa organização ajuda a separar:
+
+* interface;
+* estado;
+* regras de interação;
+* acesso à API.
+
+---
+
+# Aula 2 — CRUD
+
+Na segunda etapa, a aplicação evolui para trabalhar com outras operações HTTP.
+
+## Conteúdos trabalhados
+
+* `POST`;
+* `PATCH`;
+* `DELETE`;
+* atualização do estado;
+* CRUD;
+* comunicação com API;
+* independência entre frontend e backend.
+
+---
+
+## Rotas utilizadas
 
 ```text
 GET    /tarefas
@@ -94,20 +167,143 @@ PATCH  /tarefas/:id
 DELETE /tarefas/:id
 ```
 
+| Método   | Operação                      |
+| -------- | ----------------------------- |
+| `GET`    | Listar tarefas                |
+| `POST`   | Criar tarefa                  |
+| `PATCH`  | Atualizar parte de uma tarefa |
+| `DELETE` | Excluir tarefa                |
+
+---
+
+## CRUD
+
+As operações trabalhadas correspondem a:
+
+```text
+CREATE
+  ↓
+POST
+
+READ
+  ↓
+GET
+
+UPDATE
+  ↓
+PATCH
+
+DELETE
+  ↓
+DELETE
+```
+
+---
+
+## JSON Server
+
+O JSON Server utiliza:
+
+```text
+db.json
+```
+
+como uma base de dados simulada.
+
+Durante o desenvolvimento, a arquitetura utilizada é:
+
+```text
+React
+  ↓
+Service
+  ↓
+JSON Server
+  ↓
+db.json
+```
+
+---
+
 ## Ideia principal
 
-O frontend não precisa esperar o backend real ficar pronto.
+Um dos objetivos do projeto é demonstrar que o desenvolvimento do frontend pode avançar mesmo quando o backend definitivo ainda não está pronto.
 
-Durante o desenvolvimento usamos:
-
-```text
-React → Service → JSON Server
-```
-
-Depois podemos trocar por:
+Durante o desenvolvimento:
 
 ```text
-React → Service → Backend real
+React
+  ↓
+Service
+  ↓
+JSON Server
 ```
 
-sem reconstruir os componentes React.
+Posteriormente, o backend simulado pode ser substituído:
+
+```text
+React
+  ↓
+Service
+  ↓
+Backend real
+  ↓
+Banco de Dados
+```
+
+A camada de service reduz o acoplamento entre os componentes React e a implementação do backend.
+
+---
+
+## Fluxo geral
+
+```text
+Usuário
+   ↓
+React
+   ↓
+Componente
+   ↓
+Service
+   ↓
+Fetch API
+   ↓
+JSON Server
+   ↓
+db.json
+   ↓
+Resposta JSON
+   ↓
+Estado atualizado
+   ↓
+Interface renderizada
+```
+
+---
+
+## Conceitos praticados
+
+* React
+* Vite
+* JSON Server
+* API REST
+* Fetch API
+* JSON
+* dados mockados
+* `useState`
+* `useEffect`
+* `async/await`
+* Services
+* métodos HTTP
+* CRUD
+* gerenciamento de estado
+* renderização de listas
+* integração com API
+* separação de responsabilidades
+
+---
+
+## Autor
+
+**Luan Araujo**
+
+Projeto acadêmico desenvolvido para prática de **React, JSON Server e consumo de APIs REST**.
