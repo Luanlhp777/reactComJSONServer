@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:3001/tarefas";
+const URL_API = "http://localhost:3000/tarefas";
 
 // FUNÇÃO PARA BUSCAR TAREFAS
 export async function buscarTarefas() {

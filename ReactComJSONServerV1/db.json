@@ -1,6 +1,11 @@
 {
   "tarefas": [
     {
+      "id": 2,
+      "titulo": "Aprender JSON Server",
+      "concluida": true
+    },
+    {
       "id": 3,
       "titulo": "Consumir uma API",
       "concluida": false
@@ -14,16 +19,6 @@
       "titulo": "ESTUDAR HTML",
       "concluida": false,
       "id": 5
-    },
-    {
-      "titulo": "testando",
-      "concluida": false,
-      "id": 6
-    },
-    {
-      "titulo": "testando",
-      "concluida": false,
-      "id": 7
     }
   ]
 }
